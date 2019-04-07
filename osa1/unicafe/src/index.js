@@ -15,7 +15,18 @@ const Button = ({ handleClick, text }) => (
     </button>
 )
 
-const Statistics = (props) => (
+const Statistics = (props) => {
+  if (CountVotes(props.good,props.neutral,props.bad) === 0) {
+    return (
+      <>
+      <Footer/>
+      <p>Ei yhtään palautetta annettu.</p>
+      </>
+    )
+
+  }
+  
+  return (
   <>
   <Footer/>
   <Stat text='hyvä' value={props.good}/><br/>
@@ -25,8 +36,7 @@ const Statistics = (props) => (
   <Stat text='keskiarvo' value={AvgVotes(props.good,props.neutral,props.bad)}/><br/>
   <Stat text='positiivisia' value={PosPropVotes(props.good,props.neutral,props.bad)}/>%<br/>
   </>
-)
-
+)}
 
 const Stat = ({text, value}) => (
     <>
