@@ -25,20 +25,20 @@ const Statistics = (props) => {
     )
 
   }
-  
+
   return (
   <>
   <Footer/>
-  <Stat text='hyvä' value={props.good}/><br/>
-  <Stat text='neutraali' value={props.neutral}/><br/>
-  <Stat text='huono' value={props.bad}/><br/>
-  <Stat text='yhteensä' value={CountVotes(props.good,props.neutral,props.bad)}/><br/>
-  <Stat text='keskiarvo' value={AvgVotes(props.good,props.neutral,props.bad)}/><br/>
-  <Stat text='positiivisia' value={PosPropVotes(props.good,props.neutral,props.bad)}/>%<br/>
+  <Statistic text='hyvä' value={props.good}/><br/>
+  <Statistic text='neutraali' value={props.neutral}/><br/>
+  <Statistic text='huono' value={props.bad}/><br/>
+  <Statistic text='yhteensä' value={CountVotes(props.good,props.neutral,props.bad)}/><br/>
+  <Statistic text='keskiarvo' value={AvgVotes(props.good,props.neutral,props.bad)}/><br/>
+  <Statistic text='positiivisia' value={PosPropVotes(props.good,props.neutral,props.bad)}/>%<br/>
   </>
 )}
 
-const Stat = ({text, value}) => (
+const Statistic = ({text, value}) => (
     <>
       {text} {value}
     </>
