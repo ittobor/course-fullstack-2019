@@ -12,7 +12,7 @@ const Button = ({ handleClick, text }) => (
 
 const Stat = ({text, value}) => (
     <>
-      <p>{text} {value}</p>
+      {text} {value}
     </>
 )
 
@@ -22,6 +22,11 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const CountVotes = () => (good+neutral+bad)
+  const SumVotes = () => (good-bad)
+  const AvgVotes = () => (SumVotes()/CountVotes())
+  const PosPropVotes = () => ( (good/CountVotes())*100)
+
   return (
     <div>
       <Header/>
@@ -29,9 +34,12 @@ const App = () => {
       <Button handleClick={() => setNeutral(neutral + 1)} text='neutraali'/>
       <Button handleClick={() => setBad(bad + 1)} text='huono'/>
       <Footer/>
-      <Stat text='hyvä' value={good}/>
-      <Stat text='neutraali' value={neutral}/>
-      <Stat text='huono' value={bad}/>
+      <Stat text='hyvä' value={good}/><br/>
+      <Stat text='neutraali' value={neutral}/><br/>
+      <Stat text='huono' value={bad}/><br/>
+      <Stat text='yhteensä' value={CountVotes()}/><br/>
+      <Stat text='keskiarvo' value={AvgVotes()}/><br/>
+      <Stat text='positiivisia' value={PosPropVotes()}/>%<br/>
     </div>
   )
 }
